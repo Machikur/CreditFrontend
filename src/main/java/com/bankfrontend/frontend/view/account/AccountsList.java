@@ -1,7 +1,6 @@
 package com.bankfrontend.frontend.view.account;
 
 import com.bankfrontend.frontend.domain.Account;
-import com.bankfrontend.frontend.domain.ObservableGrid;
 import com.bankfrontend.frontend.service.AccountService;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;

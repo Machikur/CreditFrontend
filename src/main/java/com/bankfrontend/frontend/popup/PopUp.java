@@ -8,10 +8,6 @@ public class PopUp extends Dialog {
     private static PopUp popUp;
     private static Text textField = new Text("");
 
-    private PopUp(Component... components) {
-        super(components);
-    }
-
     static {
         if (popUp == null) {
             synchronized (PopUp.class) {
@@ -20,6 +16,10 @@ public class PopUp extends Dialog {
                 }
             }
         }
+    }
+
+    private PopUp(Component... components) {
+        super(components);
     }
 
     public static void throwPopUp(String text) {

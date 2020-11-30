@@ -8,7 +8,7 @@ import java.net.URI;
 public class CreditURL {
 
     public URI getForUserCreditsURI(Long userId) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.CREDITS_URL + "s")
+        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/credits")
                 .queryParam("userId", userId)
                 .build().encode().toUri();
     }
@@ -26,7 +26,7 @@ public class CreditURL {
     }
 
     public URI createNewCreditURL(Long userId, Long accountId, Double quote, Integer days) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.CREDITS_URL)
+        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL+"/credit")
                 .queryParam("userId", userId)
                 .queryParam("accountId", accountId)
                 .queryParam("quote", quote)
@@ -35,7 +35,7 @@ public class CreditURL {
     }
 
     public URI getInterestForUserURI(Long userId, int days) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/interest")
+        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/credit/interest")
                 .queryParam("userId", userId)
                 .queryParam("days", days)
                 .build().encode().toUri();

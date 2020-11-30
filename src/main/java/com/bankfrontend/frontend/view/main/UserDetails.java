@@ -5,6 +5,8 @@ import com.bankfrontend.frontend.service.AccountService;
 import com.bankfrontend.frontend.service.CreditService;
 import com.bankfrontend.frontend.service.UserService;
 import com.vaadin.flow.component.Text;
+import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
@@ -20,7 +22,12 @@ public class UserDetails extends VerticalLayout {
         Text name = new Text(" Zalogowano jako " + userService.getUserName() + " (Status użytkownika: " + userService.getUserStatus() + ")");
         VerticalLayout accountsSize = new VerticalLayout(new Text("Liczba aktywnych kont: " + accountService.getListOfAccounts().size()));
         VerticalLayout creditSize = new VerticalLayout(new Text("Liczba aktywnych kredytów: " + creditService.getUserCredits().size()));
-        add(name, getCashBalance(), accountsSize, creditSize, getUserIndebtedness());
+        Button logout = new Button("Wyloguj"
+                , s -> {
+            userService.logout();
+            UI.getCurrent().navigate("login");
+        });
+        add(name, getCashBalance(), accountsSize, creditSize, getUserIndebtedness(), logout);
     }
 
 

@@ -9,25 +9,22 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
 import java.util.List;
 
-public class PaymentsHistoryList extends VerticalLayout {
+public class PaymentsHistoryList extends VerticalLayout implements PaymentObserver {
 
     private PaymentService paymentService = PaymentService.getInstance();
     private Grid<Payment> paymentGrid = setGrid();
 
-    public PaymentsHistoryList(PaymentType paymentType, String accountNumber) {
-        updatePayment(paymentType, accountNumber);
+    public PaymentsHistoryList() {
         add(paymentGrid);
     }
 
-    public void updatePayment(PaymentType paymentType, String accountNumber) {
+    @Override
+    public void updateComponent(PaymentType paymentType, String accountNumber) {
         List<Payment> payments;
-        switch (accountNumber) {
-            case StaticsURLAndStrings.ALL:
-                payments = paymentService.getUserPayments(paymentType);
-                break;
-            default:
-                payments = paymentService.getAccountPayments(accountNumber, paymentType);
-                break;
+        if (StaticsURLAndStrings.ALL.equals(accountNumber)) {
+            payments = paymentService.getUserPayments(paymentType);
+        } else {
+            payments = paymentService.getAccountPayments(accountNumber, paymentType);
         }
         switch (paymentType) {
             case CREDIT:

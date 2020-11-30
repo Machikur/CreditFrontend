@@ -14,7 +14,8 @@ public class MainView extends HorizontalLayout {
     public MainView() {
         CurrenciesView currenciesView = new CurrenciesView();
         UserDetails userDetails = new UserDetails();
-        add(userDetails, getOptionButtons(), currenciesView);
+        CurrenciesRate currenciesRate=new CurrenciesRate();
+        add(userDetails, getOptionButtons(),currenciesRate, currenciesView);
     }
 
     public VerticalLayout getOptionButtons() {
@@ -24,9 +25,6 @@ public class MainView extends HorizontalLayout {
         Button paymentHistoryButton = new Button("Przejdź do histori płatności"
                 , s -> UI.getCurrent().navigate("paymentHistory"));
 
-        Button paymentButton = new Button("Przejdź do panelu przelewów"
-                , s -> UI.getCurrent().navigate("payment"));
-
         Button creditButton = new Button("Przejdź do panelu kredytów"
                 , s -> UI.getCurrent().navigate("credit"));
 
@@ -34,6 +32,6 @@ public class MainView extends HorizontalLayout {
                 , s -> UI.getCurrent().navigate("user"));
 
 
-        return new VerticalLayout(accountButton, paymentHistoryButton, paymentButton, creditButton, userButton);
+        return new VerticalLayout(accountButton, paymentHistoryButton, creditButton, userButton);
     }
 }

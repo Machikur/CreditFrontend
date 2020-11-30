@@ -1,8 +1,5 @@
 package com.bankfrontend.frontend.view.account;
 
-import com.bankfrontend.frontend.domain.Observable;
-import com.bankfrontend.frontend.domain.ObservableGrid;
-import com.bankfrontend.frontend.domain.Observer;
 import com.bankfrontend.frontend.popup.PopUp;
 import com.bankfrontend.frontend.service.AccountService;
 import com.vaadin.flow.component.Text;

@@ -1,8 +1,8 @@
 package com.bankfrontend.frontend.view.credit;
 
-import com.bankfrontend.frontend.domain.Observable;
-import com.bankfrontend.frontend.domain.ObservableGrid;
-import com.bankfrontend.frontend.domain.Observer;
+import com.bankfrontend.frontend.view.account.Observable;
+import com.bankfrontend.frontend.view.account.ObservableGrid;
+import com.bankfrontend.frontend.view.account.Observer;
 import com.bankfrontend.frontend.domain.Payment;
 import com.bankfrontend.frontend.popup.PopUp;
 import com.bankfrontend.frontend.service.AccountService;

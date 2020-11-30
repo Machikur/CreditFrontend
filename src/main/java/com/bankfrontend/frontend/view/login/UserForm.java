@@ -1,6 +1,7 @@
 package com.bankfrontend.frontend.view.login;
 
 import com.bankfrontend.frontend.domain.User;
+import com.bankfrontend.frontend.popup.PopUp;
 import com.bankfrontend.frontend.service.UserService;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
@@ -19,7 +20,6 @@ public class UserForm extends FormLayout {
     private final TextField mailAddress = new TextField("Email");
     private final NumberField monthlyEarnings = new NumberField("Zarobki");
     private final UserService userService = UserService.getInstance();
-    private final Text errorText = new Text("");
 
     public UserForm() {
         Button save = new Button("Zapisz użytkownika", b -> {
@@ -34,12 +34,12 @@ public class UserForm extends FormLayout {
                 userService.loadUser(user.getName(), user.getPassword());
                 UI.getCurrent().navigate("bank");
             } else {
-                errorText.setText("Wpisano nieprawidłowe dane");
+                PopUp.throwPopUp("Wpisano nieprawidłowe dane");
             }
         });
         save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
         Text title = new Text("Założ nowe konto");
-        add(title, name, password, mailAddress, monthlyEarnings, save, errorText);
+        add(title, name, password, mailAddress, monthlyEarnings, save);
         Binder<User> userBinder = new Binder<>(User.class);
         userBinder.bindInstanceFields(this);
     }

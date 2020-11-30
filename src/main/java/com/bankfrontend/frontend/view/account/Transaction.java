@@ -1,8 +1,5 @@
 package com.bankfrontend.frontend.view.account;
 
-import com.bankfrontend.frontend.domain.Observable;
-import com.bankfrontend.frontend.domain.ObservableGrid;
-import com.bankfrontend.frontend.domain.Observer;
 import com.bankfrontend.frontend.domain.Payment;
 import com.bankfrontend.frontend.popup.PopUp;
 import com.bankfrontend.frontend.service.AccountService;
@@ -39,6 +36,7 @@ public class Transaction extends VerticalLayout implements Observable {
                 payment.setAccountToId(accountService.getAccountIdByAccountNumber(accountNumberField.getValue()));
                 payment.setQuote(BigDecimal.valueOf(quote.getValue()));
                 paymentService.makePayment(payment, pin.getValue().intValue());
+                sleepAndUpdate();
             } catch (Exception s) {
                 PopUp.throwErrorPopUp();
             }

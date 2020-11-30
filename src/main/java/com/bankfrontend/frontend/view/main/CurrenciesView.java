@@ -17,63 +17,35 @@ public class CurrenciesView extends HorizontalLayout {
     private final CurrencyService currencyService = CurrencyService.getInstance();
 
     public CurrenciesView() {
-        add(getCurrenciesRates(), getCounterRate());
-    }
 
-    public VerticalLayout getCurrenciesRates() {
-        VerticalLayout verticalLayout = new VerticalLayout();
-        ComboBox<Currency> currencyComboBox = new ComboBox<>("Waluta");
-        Text title = new Text("Sprawdź kurs walut na dzień " + LocalDate.now());
-        currencyComboBox.setItems(Currency.values());
-        NumberField pln = new NumberField("PLN");
-        NumberField eur = new NumberField("EUR");
-        NumberField gbp = new NumberField("GBP");
-        NumberField usd = new NumberField("USD");
-        NumberField[] fields = {pln, usd, gbp, eur};
-        Arrays.stream(fields).forEach(s -> s.setReadOnly(true));
-        currencyComboBox.addValueChangeListener(s -> {
-            Currency currency = currencyComboBox.getValue();
-            Rates rates = currencyService.getCurrencies(currency.getDesc()).getRates();
-            pln.setValue(rates.getPLN());
-            gbp.setValue(rates.getGBP());
-            usd.setValue(rates.getUSD());
-            eur.setValue(rates.getEUR());
-        });
-        currencyComboBox.setValue(Currency.PLN);
-        setSpacing(false);
-        verticalLayout.add(title, currencyComboBox, pln, eur, gbp, usd);
-        return verticalLayout;
-    }
+            ComboBox<Currency> currencyFrom = getComboBox("Waluta do zmiany");
+            ComboBox<Currency> currencyTo = getComboBox("Waluta po zmianie");
 
-    public HorizontalLayout getCounterRate() {
-        ComboBox<Currency> currencyFrom = getComboBox("Waluta do zmiany");
-        ComboBox<Currency> currencyTo = getComboBox("Waluta po zmianie");
+            NumberField rateTo = new NumberField("Kwota po zamianie");
+            rateTo.setValue(0.0);
+            rateTo.setReadOnly(true);
 
-        NumberField rateTo = new NumberField("Kwota po zamianie");
-        rateTo.setValue(0.0);
-        rateTo.setReadOnly(true);
+            NumberField rateFrom = new NumberField("Kwota do zamiany");
+            rateFrom.setValue(0.0);
 
-        NumberField rateFrom = new NumberField("Kwota do zamiany");
-        rateFrom.setValue(0.0);
+            Button countButton = new Button("przelicz", event -> countValue(currencyFrom, currencyTo, rateFrom, rateTo));
+            Button changeButton = new Button("<>", event -> {
+                Currency toChange = currencyFrom.getValue();
+                currencyFrom.setValue(currencyTo.getValue());
+                currencyTo.setValue(toChange);
+            });
 
-        Button countButton = new Button("przelicz", event -> countValue(currencyFrom, currencyTo, rateFrom, rateTo));
-        Button changeButton = new Button("<>", event -> {
-            Currency toChange = currencyFrom.getValue();
-            currencyFrom.setValue(currencyTo.getValue());
-            currencyTo.setValue(toChange);
-        });
+            rateFrom.addValueChangeListener(event -> countValue(currencyFrom, currencyTo, rateFrom, rateTo));
+            currencyFrom.addValueChangeListener(event -> countValue(currencyFrom, currencyTo, rateFrom, rateTo));
+            currencyTo.addValueChangeListener(event -> countValue(currencyFrom, currencyTo, rateFrom, rateTo));
 
-        rateFrom.addValueChangeListener(event -> countValue(currencyFrom, currencyTo, rateFrom, rateTo));
-        currencyFrom.addValueChangeListener(event -> countValue(currencyFrom, currencyTo, rateFrom, rateTo));
-        currencyTo.addValueChangeListener(event -> countValue(currencyFrom, currencyTo, rateFrom, rateTo));
+            VerticalLayout leftLayout = new VerticalLayout(currencyFrom, rateFrom);
+            VerticalLayout middleLayout = new VerticalLayout(new Text("Zamień waluty"), changeButton, countButton);
+            VerticalLayout rightLayout = new VerticalLayout(currencyTo, rateTo);
 
-        VerticalLayout leftLayout = new VerticalLayout(currencyFrom, rateFrom);
-        VerticalLayout middleLayout = new VerticalLayout(new Text("Zamień waluty"), changeButton, countButton);
-        VerticalLayout rightLayout = new VerticalLayout(currencyTo, rateTo);
+            add(leftLayout, middleLayout, rightLayout);
 
-        return new HorizontalLayout(leftLayout, middleLayout, rightLayout);
-
-    }
+        }
 
     private void countValue(ComboBox<Currency> from, ComboBox<Currency> to, NumberField quoteField, NumberField result) {
         Currency curFrom = from.getValue();

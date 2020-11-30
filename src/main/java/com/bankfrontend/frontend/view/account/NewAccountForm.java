@@ -1,8 +1,6 @@
 package com.bankfrontend.frontend.view.account;
 
 import com.bankfrontend.frontend.domain.Currency;
-import com.bankfrontend.frontend.domain.Observable;
-import com.bankfrontend.frontend.domain.Observer;
 import com.bankfrontend.frontend.popup.PopUp;
 import com.bankfrontend.frontend.service.AccountService;
 import com.vaadin.flow.component.Text;
@@ -18,7 +16,8 @@ public class NewAccountForm extends VerticalLayout implements Observable {
     private final AccountService accountService = AccountService.getInstance();
     private final List<Observer> observers = new ArrayList<>();
 
-    public NewAccountForm() {
+    public NewAccountForm(Observer observer) {
+        registerObserver(observer);
         ComboBox<Currency> comboBox = new ComboBox<>("Waluta");
         comboBox.setItems(Currency.values());
         comboBox.setValue(Currency.PLN);

@@ -11,10 +11,9 @@ import com.vaadin.flow.router.Route;
 @Route("account")
 public class MainView extends VerticalLayout {
 
-    private final AccountsList accountsList = new AccountsList();
-
     public MainView() {
-        NewAccountForm newAccountForm = new NewAccountForm();
+        AccountsList accountsList = new AccountsList();
+        NewAccountForm newAccountForm = new NewAccountForm(accountsList);
         Payment payment = new Payment(accountsList);
         Withdrawal withdrawal = new Withdrawal(accountsList);
         Transaction transaction = new Transaction(accountsList);

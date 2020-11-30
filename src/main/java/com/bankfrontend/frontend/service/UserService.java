@@ -14,14 +14,15 @@ import java.util.Objects;
 
 public class UserService {
 
-    private static Long userId = 48L;
+    private static Long userId;
     private static UserService userService;
+    private static String userName;
+    private static Status userStatus;
+    private static String userEmail;
+    private static Double monthlyEarnings;
+
     private final RestTemplate restTemplate = ConfigurationProject.getInstanceOfRestTemplate();
     private final UserURL userURL = new UserURL();
-    private String userName = "Marcin";
-    private Status userStatus = Status.VIP;
-    private String userEmail = "Email@gmail.com";
-    private Double monthlyEarnings = 2000.0;
 
     private UserService() {
     }
@@ -50,6 +51,7 @@ public class UserService {
         }
         return optionalUser != null;
     }
+
 
     public String getUserName() {
         return userName;
@@ -84,6 +86,14 @@ public class UserService {
             return true;
         }
         return false;
+    }
+
+    public void logout() {
+        userId = null;
+        userName = null;
+        userStatus = null;
+        userEmail = null;
+        monthlyEarnings = null;
     }
 
     public void deleteUser() {

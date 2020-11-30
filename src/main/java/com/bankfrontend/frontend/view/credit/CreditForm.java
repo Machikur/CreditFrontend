@@ -1,12 +1,11 @@
 package com.bankfrontend.frontend.view.credit;
 
-import com.bankfrontend.frontend.domain.Observable;
-import com.bankfrontend.frontend.domain.ObservableGrid;
-import com.bankfrontend.frontend.domain.Observer;
 import com.bankfrontend.frontend.popup.PopUp;
 import com.bankfrontend.frontend.service.AccountService;
 import com.bankfrontend.frontend.service.CreditService;
 import com.bankfrontend.frontend.service.UserService;
+import com.bankfrontend.frontend.view.account.Observable;
+import com.bankfrontend.frontend.view.account.Observer;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;
@@ -49,6 +48,7 @@ public class CreditForm extends VerticalLayout implements Observable {
             }
             updateInterestFields();
         });
+
         creditTypeComboBox.addValueChangeListener(event -> updateInterestFields());
 
         List<Integer> creditDays = creditService.getAvailableCreditDays();
@@ -66,9 +66,9 @@ public class CreditForm extends VerticalLayout implements Observable {
                 PopUp.throwErrorPopUp();
             }
         });
-        VerticalLayout left = new VerticalLayout( accountNumbers, creditQuote,creditTypeComboBox);
-        VerticalLayout right = new VerticalLayout( interest, quoteToPay,button);
-        add(new Text("Weź nowy kredyt"),new HorizontalLayout(left,right));
+        VerticalLayout left = new VerticalLayout(accountNumbers, creditQuote, creditTypeComboBox);
+        VerticalLayout right = new VerticalLayout(interest, quoteToPay, button);
+        add(new Text("Weź nowy kredyt"), new HorizontalLayout(left, right));
         setAlignItems(Alignment.CENTER);
     }
 

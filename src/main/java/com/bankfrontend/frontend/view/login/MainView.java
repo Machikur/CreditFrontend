@@ -9,10 +9,9 @@ import com.vaadin.flow.router.Route;
 @Route("login")
 public class MainView extends VerticalLayout {
 
-    private UserForm userForm = new UserForm();
-    private LoginView loginView = new LoginView();
-
     public MainView() {
+        UserForm userForm = new UserForm();
+        LoginView loginView = new LoginView();
         HorizontalLayout mainContent = new HorizontalLayout(loginView, userForm);
         add(mainContent);
         setSizeFull();

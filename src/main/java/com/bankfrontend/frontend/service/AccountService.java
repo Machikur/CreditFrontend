@@ -42,7 +42,6 @@ public class AccountService {
                 .orElse(-1L);
     }
 
-
     public Double getAllCashInCurrency(String currency) {
         return restTemplate.getForObject(accountURL.getCashBalanceForCurrencyURI(currency, userId), Double.class);
     }
@@ -60,8 +59,8 @@ public class AccountService {
                 .collect(Collectors.toList());
     }
 
-    public Account createNewAccount(Currency currency) {
-        return restTemplate.postForObject(accountURL.saveAccountURI(currency, userId), null, Account.class);
+    public void createNewAccount(Currency currency) {
+         restTemplate.postForObject(accountURL.saveAccountURI(currency, userId), null, Account.class);
     }
 
     public void deleteAccount(Long accountId, int pinNumber) {

@@ -6,13 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Quotes {
 
+    @JsonProperty("base")
     private String base;
 
+    @JsonProperty("rates")
     private Rates rates;
 
 

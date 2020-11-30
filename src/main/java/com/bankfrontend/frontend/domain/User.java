@@ -1,8 +1,6 @@
 package com.bankfrontend.frontend.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 public class User {
 
     private Long id;
@@ -42,4 +41,11 @@ public class User {
         this.monthlyEarnings = monthlyEarnings;
     }
 
+    public User(Long id, String name, String password, String mailAddress, Double monthlyEarnings) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.mailAddress = mailAddress;
+        this.monthlyEarnings = monthlyEarnings;
+    }
 }
