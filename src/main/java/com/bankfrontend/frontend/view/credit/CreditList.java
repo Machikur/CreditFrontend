@@ -1,8 +1,8 @@
 package com.bankfrontend.frontend.view.credit;
 
 import com.bankfrontend.frontend.domain.Credit;
-import com.bankfrontend.frontend.view.account.ObservableGrid;
 import com.bankfrontend.frontend.service.CreditService;
+import com.bankfrontend.frontend.view.account.ObservableGrid;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 

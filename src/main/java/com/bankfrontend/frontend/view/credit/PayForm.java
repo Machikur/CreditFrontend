@@ -1,13 +1,13 @@
 package com.bankfrontend.frontend.view.credit;
 
-import com.bankfrontend.frontend.view.account.Observable;
-import com.bankfrontend.frontend.view.account.ObservableGrid;
-import com.bankfrontend.frontend.view.account.Observer;
 import com.bankfrontend.frontend.domain.Payment;
 import com.bankfrontend.frontend.popup.PopUp;
 import com.bankfrontend.frontend.service.AccountService;
 import com.bankfrontend.frontend.service.CreditService;
 import com.bankfrontend.frontend.service.PaymentService;
+import com.bankfrontend.frontend.view.account.Observable;
+import com.bankfrontend.frontend.view.account.ObservableGrid;
+import com.bankfrontend.frontend.view.account.Observer;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.combobox.ComboBox;

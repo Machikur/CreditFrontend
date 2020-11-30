@@ -3,7 +3,6 @@ package com.bankfrontend.frontend.view.payment;
 
 import com.bankfrontend.frontend.domain.PaymentType;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 

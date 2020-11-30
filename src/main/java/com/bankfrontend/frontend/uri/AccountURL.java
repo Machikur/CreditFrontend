@@ -23,7 +23,7 @@ public class AccountURL {
     }
 
     public URI saveAccountURI(Currency currency, Long userId) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL+"/account")
+        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/account")
                 .queryParam("userId", userId)
                 .queryParam("currency", currency)
                 .build().encode().toUri();

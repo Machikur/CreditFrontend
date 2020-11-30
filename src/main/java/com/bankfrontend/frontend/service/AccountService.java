@@ -60,7 +60,7 @@ public class AccountService {
     }
 
     public void createNewAccount(Currency currency) {
-         restTemplate.postForObject(accountURL.saveAccountURI(currency, userId), null, Account.class);
+        restTemplate.postForObject(accountURL.saveAccountURI(currency, userId), null, Account.class);
     }
 
     public void deleteAccount(Long accountId, int pinNumber) {

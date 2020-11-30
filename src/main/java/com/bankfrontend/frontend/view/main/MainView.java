@@ -14,8 +14,8 @@ public class MainView extends HorizontalLayout {
     public MainView() {
         CurrenciesView currenciesView = new CurrenciesView();
         UserDetails userDetails = new UserDetails();
-        CurrenciesRate currenciesRate=new CurrenciesRate();
-        add(userDetails, getOptionButtons(),currenciesRate, currenciesView);
+        CurrenciesRate currenciesRate = new CurrenciesRate();
+        add(userDetails, getOptionButtons(), currenciesRate, currenciesView);
     }
 
     public VerticalLayout getOptionButtons() {

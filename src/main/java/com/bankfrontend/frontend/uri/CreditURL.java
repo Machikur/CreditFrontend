@@ -26,7 +26,7 @@ public class CreditURL {
     }
 
     public URI createNewCreditURL(Long userId, Long accountId, Double quote, Integer days) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL+"/credit")
+        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/credit")
                 .queryParam("userId", userId)
                 .queryParam("accountId", accountId)
                 .queryParam("quote", quote)

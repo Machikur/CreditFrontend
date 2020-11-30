@@ -1,10 +1,10 @@
 package com.bankfrontend.frontend.view.credit;
 
+import com.bankfrontend.frontend.popup.PopUp;
+import com.bankfrontend.frontend.service.CreditService;
 import com.bankfrontend.frontend.view.account.Observable;
 import com.bankfrontend.frontend.view.account.ObservableGrid;
 import com.bankfrontend.frontend.view.account.Observer;
-import com.bankfrontend.frontend.popup.PopUp;
-import com.bankfrontend.frontend.service.CreditService;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
