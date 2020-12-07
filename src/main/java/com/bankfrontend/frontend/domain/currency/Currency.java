@@ -1,4 +1,4 @@
-package com.bankfrontend.frontend.domain;
+package com.bankfrontend.frontend.domain.currency;
 
 public enum Currency {
     PLN("PLN"), USD("USD"), EUR("EUR"), GBP("GBP");

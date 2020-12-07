@@ -7,13 +7,15 @@ import com.vaadin.flow.router.Route;
 
 @PageTitle("Logowanie")
 @Route("login")
-public class MainView extends VerticalLayout {
+public class MainView extends HorizontalLayout {
 
     public MainView() {
+        ProjectInfo projectInfo = new ProjectInfo();
         UserForm userForm = new UserForm();
         LoginView loginView = new LoginView();
-        HorizontalLayout mainContent = new HorizontalLayout(loginView, userForm);
-        add(mainContent);
+        VerticalLayout leftSide = new VerticalLayout(loginView, projectInfo);
+        leftSide.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+        add(userForm, loginView, projectInfo);
         setSizeFull();
     }
 

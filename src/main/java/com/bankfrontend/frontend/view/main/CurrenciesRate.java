@@ -1,10 +1,11 @@
 package com.bankfrontend.frontend.view.main;
 
-import com.bankfrontend.frontend.domain.Currency;
-import com.bankfrontend.frontend.domain.Rates;
+import com.bankfrontend.frontend.domain.currency.Currency;
+import com.bankfrontend.frontend.domain.currency.Rates;
 import com.bankfrontend.frontend.service.CurrencyService;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
 
@@ -36,7 +37,9 @@ public class CurrenciesRate extends VerticalLayout {
         });
         currencyComboBox.setValue(Currency.PLN);
         setSpacing(false);
-        add(title, currencyComboBox, pln, eur, gbp, usd);
+        add(title, currencyComboBox);
+        add(new HorizontalLayout(pln, eur));
+        add(new HorizontalLayout(gbp, usd));
     }
 
 }

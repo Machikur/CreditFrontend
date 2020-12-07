@@ -1,6 +1,6 @@
 package com.bankfrontend.frontend.view.account;
 
-import com.bankfrontend.frontend.domain.Currency;
+import com.bankfrontend.frontend.domain.currency.Currency;
 import com.bankfrontend.frontend.popup.PopUp;
 import com.bankfrontend.frontend.service.AccountService;
 import com.vaadin.flow.component.Text;

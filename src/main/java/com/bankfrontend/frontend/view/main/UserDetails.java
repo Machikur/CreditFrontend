@@ -1,6 +1,6 @@
 package com.bankfrontend.frontend.view.main;
 
-import com.bankfrontend.frontend.domain.Currency;
+import com.bankfrontend.frontend.domain.currency.Currency;
 import com.bankfrontend.frontend.service.AccountService;
 import com.bankfrontend.frontend.service.CreditService;
 import com.bankfrontend.frontend.service.UserService;
@@ -14,6 +14,7 @@ import com.vaadin.flow.component.textfield.NumberField;
 import java.util.List;
 
 public class UserDetails extends VerticalLayout {
+
     private final AccountService accountService = AccountService.getInstance();
     private final CreditService creditService = CreditService.getInstance();
     private final UserService userService = UserService.getInstance();
@@ -29,7 +30,6 @@ public class UserDetails extends VerticalLayout {
         });
         add(name, getCashBalance(), accountsSize, creditSize, getUserIndebtedness(), logout);
     }
-
 
     private VerticalLayout getCashBalance() {
         VerticalLayout verticalLayout = new VerticalLayout();

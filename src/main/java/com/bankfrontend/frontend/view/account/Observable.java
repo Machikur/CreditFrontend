@@ -19,7 +19,7 @@ public interface Observable {
 
     default void sleepAndUpdate() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }

@@ -18,7 +18,7 @@ public class UserForm extends FormLayout {
     private final TextField name = new TextField("Login");
     private final PasswordField password = new PasswordField("Hasło");
     private final TextField mailAddress = new TextField("Email");
-    private final NumberField monthlyEarnings = new NumberField("Zarobki");
+    private final NumberField monthlyEarnings = new NumberField("Miesięczne zarobki");
     private final UserService userService = UserService.getInstance();
 
     public UserForm() {

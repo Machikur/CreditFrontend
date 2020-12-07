@@ -1,9 +1,9 @@
 package com.bankfrontend.frontend.service;
 
 import com.bankfrontend.frontend.ConfigurationProject;
-import com.bankfrontend.frontend.domain.Currency;
 import com.bankfrontend.frontend.domain.Status;
 import com.bankfrontend.frontend.domain.User;
+import com.bankfrontend.frontend.domain.currency.Currency;
 import com.bankfrontend.frontend.uri.UserURL;
 import org.springframework.web.client.RestTemplate;
 

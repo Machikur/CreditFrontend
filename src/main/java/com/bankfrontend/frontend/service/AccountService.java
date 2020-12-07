@@ -2,7 +2,7 @@ package com.bankfrontend.frontend.service;
 
 import com.bankfrontend.frontend.ConfigurationProject;
 import com.bankfrontend.frontend.domain.Account;
-import com.bankfrontend.frontend.domain.Currency;
+import com.bankfrontend.frontend.domain.currency.Currency;
 import com.bankfrontend.frontend.uri.AccountURL;
 import lombok.Getter;
 import org.springframework.web.client.RestTemplate;
@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class AccountService {
     private static AccountService accountService;
     private final RestTemplate restTemplate = ConfigurationProject.getInstanceOfRestTemplate();
-    private final Long userId = UserService.getUserId();
     private final AccountURL accountURL = new AccountURL();
 
     private AccountService() {
@@ -43,11 +42,11 @@ public class AccountService {
     }
 
     public Double getAllCashInCurrency(String currency) {
-        return restTemplate.getForObject(accountURL.getCashBalanceForCurrencyURI(currency, userId), Double.class);
+        return restTemplate.getForObject(accountURL.getCashBalanceForCurrencyURI(currency, UserService.getUserId()), Double.class);
     }
 
     public List<Account> getListOfAccounts() {
-        Account[] accounts = restTemplate.getForObject(accountURL.getAccountsForUserURI(userId), Account[].class);
+        Account[] accounts = restTemplate.getForObject(accountURL.getAccountsForUserURI(UserService.getUserId()), Account[].class);
         if (accounts != null) {
             return Arrays.asList(accounts);
         } else return new ArrayList<>();
@@ -60,7 +59,7 @@ public class AccountService {
     }
 
     public void createNewAccount(Currency currency) {
-        restTemplate.postForObject(accountURL.saveAccountURI(currency, userId), null, Account.class);
+        restTemplate.postForObject(accountURL.saveAccountURI(currency, UserService.getUserId()), null, Account.class);
     }
 
     public void deleteAccount(Long accountId, int pinNumber) {

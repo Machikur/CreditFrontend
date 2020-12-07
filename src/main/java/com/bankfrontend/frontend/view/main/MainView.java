@@ -12,10 +12,11 @@ import com.vaadin.flow.router.Route;
 public class MainView extends HorizontalLayout {
 
     public MainView() {
+        FinanceView financeView = new FinanceView();
         CurrenciesView currenciesView = new CurrenciesView();
         UserDetails userDetails = new UserDetails();
         CurrenciesRate currenciesRate = new CurrenciesRate();
-        add(userDetails, getOptionButtons(), currenciesRate, currenciesView);
+        add(userDetails, getOptionButtons(), financeView, new VerticalLayout(currenciesRate, currenciesView));
     }
 
     public VerticalLayout getOptionButtons() {

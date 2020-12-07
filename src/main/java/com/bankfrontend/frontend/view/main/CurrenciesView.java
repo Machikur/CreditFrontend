@@ -1,6 +1,6 @@
 package com.bankfrontend.frontend.view.main;
 
-import com.bankfrontend.frontend.domain.Currency;
+import com.bankfrontend.frontend.domain.currency.Currency;
 import com.bankfrontend.frontend.service.CurrencyService;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;

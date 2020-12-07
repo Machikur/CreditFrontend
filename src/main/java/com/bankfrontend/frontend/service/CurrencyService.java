@@ -1,7 +1,7 @@
 package com.bankfrontend.frontend.service;
 
 import com.bankfrontend.frontend.ConfigurationProject;
-import com.bankfrontend.frontend.domain.Quotes;
+import com.bankfrontend.frontend.domain.currency.Quotes;
 import com.bankfrontend.frontend.uri.CurrencyURL;
 import lombok.Getter;
 import org.springframework.web.client.RestTemplate;

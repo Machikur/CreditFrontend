@@ -24,10 +24,10 @@ public class CreditForm extends VerticalLayout implements Observable {
     private final CreditService creditService = CreditService.getInstance();
     private final List<Observer> observers = new ArrayList<>();
     private final ComboBox<String> accountNumbers = new ComboBox<>("Na wybrane konto");
-    private final NumberField creditQuote = new NumberField("Kwota pożyczki", (double) 0, null);
     private final TextField interest = new TextField("Oprocentowanie");
     private final TextField quoteToPay = new TextField("Kwota do zapłaty");
     private final ComboBox<Integer> creditTypeComboBox = new ComboBox<>("Wybierz okres spłaty kredytu");
+    private final NumberField creditQuote = new NumberField("Kwota pożyczki", (double) 0, e -> creditButtonListener());
 
     public CreditForm(Observer... observers) {
         registerObserver(observers);
@@ -40,14 +40,6 @@ public class CreditForm extends VerticalLayout implements Observable {
             accountNumbers.setItems(accounts);
             accountNumbers.setValue(accounts.get(0));
         }
-        BigDecimal max = creditService.getUserCreditOptions().getMaxQuote();
-
-        creditQuote.addValueChangeListener(event -> {
-            if (creditQuote.getValue().compareTo(max.doubleValue()) > 0) {
-                creditQuote.setValue(max.doubleValue());
-            }
-            updateInterestFields();
-        });
 
         creditTypeComboBox.addValueChangeListener(event -> updateInterestFields());
 
@@ -70,6 +62,14 @@ public class CreditForm extends VerticalLayout implements Observable {
         VerticalLayout right = new VerticalLayout(interest, quoteToPay, button);
         add(new Text("Weź nowy kredyt"), new HorizontalLayout(left, right));
         setAlignItems(Alignment.CENTER);
+    }
+
+    private void creditButtonListener() {
+        BigDecimal max = creditService.getUserCreditOptions().getMaxQuote();
+        if (creditQuote.getValue().compareTo(max.doubleValue()) > 0) {
+            creditQuote.setValue(max.doubleValue());
+        }
+        updateInterestFields();
     }
 
     private void updateInterestFields() {

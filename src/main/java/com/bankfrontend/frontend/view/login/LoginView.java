@@ -29,6 +29,7 @@ public class LoginView extends VerticalLayout {
             }
         });
         add(text, userName, password, loadButton);
+        //setAlignItems(Alignment.CENTER);
     }
 
 }

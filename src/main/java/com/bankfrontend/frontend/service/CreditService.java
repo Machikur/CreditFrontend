@@ -4,7 +4,7 @@ import com.bankfrontend.frontend.ConfigurationProject;
 import com.bankfrontend.frontend.domain.Credit;
 import com.bankfrontend.frontend.domain.CreditOptions;
 import com.bankfrontend.frontend.domain.CreditType;
-import com.bankfrontend.frontend.domain.Currency;
+import com.bankfrontend.frontend.domain.currency.Currency;
 import com.bankfrontend.frontend.uri.CreditURL;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 
 public class CreditService {
     private static CreditService creditService;
-    private final Long userId = UserService.getUserId();
     private final RestTemplate restTemplate = ConfigurationProject.getInstanceOfRestTemplate();
     private final CreditURL creditURL = new CreditURL();
 
@@ -38,7 +37,7 @@ public class CreditService {
     }
 
     public List<Credit> getUserCredits() {
-        Credit[] credits = restTemplate.getForObject(creditURL.getForUserCreditsURI(userId), Credit[].class);
+        Credit[] credits = restTemplate.getForObject(creditURL.getForUserCreditsURI(UserService.getUserId()), Credit[].class);
         if (credits == null || credits.length == 0) {
             return new ArrayList<>();
         }
@@ -52,7 +51,7 @@ public class CreditService {
     }
 
     public CreditOptions getUserCreditOptions() {
-        return restTemplate.getForObject(creditURL.getCreditOptionsURI(userId), CreditOptions.class);
+        return restTemplate.getForObject(creditURL.getCreditOptionsURI(UserService.getUserId()), CreditOptions.class);
     }
 
     public List<Integer> getAvailableCreditDays() {

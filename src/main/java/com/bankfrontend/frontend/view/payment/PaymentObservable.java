@@ -19,4 +19,5 @@ public interface PaymentObservable {
             o.updateComponent(paymentType, accountNumber);
         }
     }
+
 }

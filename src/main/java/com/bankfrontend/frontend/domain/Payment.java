@@ -1,5 +1,6 @@
 package com.bankfrontend.frontend.domain;
 
+import com.bankfrontend.frontend.domain.currency.Currency;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

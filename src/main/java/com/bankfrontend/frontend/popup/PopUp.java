@@ -23,7 +23,6 @@ public class PopUp extends Dialog {
     }
 
     public static void throwPopUp(String text) {
-        ;
         textField.setText(text);
         popUp.open();
     }
@@ -32,4 +31,5 @@ public class PopUp extends Dialog {
         textField.setText("Coś poszło nie tak, spróbuj jeszcze raz");
         popUp.open();
     }
+
 }

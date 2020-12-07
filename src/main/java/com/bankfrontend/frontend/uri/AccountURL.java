@@ -1,7 +1,7 @@
 package com.bankfrontend.frontend.uri;
 
 import com.bankfrontend.frontend.StaticsURLAndStrings;
-import com.bankfrontend.frontend.domain.Currency;
+import com.bankfrontend.frontend.domain.currency.Currency;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;

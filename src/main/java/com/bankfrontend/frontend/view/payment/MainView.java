@@ -17,5 +17,4 @@ public class MainView extends VerticalLayout {
         add(buttons, paymentsHistoryList, backButton);
     }
 
-
 }
