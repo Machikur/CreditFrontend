@@ -19,7 +19,8 @@ public class Withdrawal extends VerticalLayout implements AccountObservable {
     public Withdrawal(AccountObservableGrid accountObservableGrid, AccountService accountService) {
         this.accountService = accountService;
         registerObserver(accountObservableGrid);
-        NumberField numberField = new NumberField("Kwota ", 0.0, event->{});
+        NumberField numberField = new NumberField("Kwota ", 0.0, event -> {
+        });
         Button withdrawalButton = new Button("wypłać", b -> {
             try {
                 this.accountService.makeWithdrawal(accountObservableGrid.getSelectedOptionId(), numberField.getValue());

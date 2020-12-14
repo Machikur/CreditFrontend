@@ -6,7 +6,7 @@ import org.junit.Test;
 public class UserServiceTest {
 
     @Test
-    public void getInstance() {
+    public void getInstanceTest() {
         //given
         UserService userService2 = UserService.getInstance();
         UserService userService1 = UserService.getInstance();

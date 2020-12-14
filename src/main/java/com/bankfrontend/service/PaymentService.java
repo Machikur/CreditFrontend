@@ -29,8 +29,7 @@ public class PaymentService {
     }
 
     public void makePayment(Payment payment, int pinNumber) {
-        Payment result=restTemplate.postForObject(paymentURL.makePaymentURL(userService.getUserId(), pinNumber), payment,Payment.class);
-
+        restTemplate.postForObject(paymentURL.makePaymentURL(userService.getUserId(), pinNumber), payment, Payment.class);
     }
 
     public List<Payment> getUserPayments(PaymentType paymentType) {

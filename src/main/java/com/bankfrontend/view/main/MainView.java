@@ -20,24 +20,27 @@ public class MainView extends HorizontalLayout {
         CurrenciesView currenciesView = new CurrenciesView(currencyService);
         UserDetails userDetails = new UserDetails(accountService, creditService);
         CurrenciesRate currenciesRate = new CurrenciesRate(currencyService);
-        add(userDetails, getOptionButtons(), financeView, new VerticalLayout(currenciesRate, currenciesView));
+        add(userDetails, getOptionButtons(accountService), financeView, new VerticalLayout(currenciesRate, currenciesView));
     }
 
-    public VerticalLayout getOptionButtons() {
+    public VerticalLayout getOptionButtons(AccountService accountService) {
+        Button userButton = new Button("Przejdź do panelu użytkownika"
+                , s -> UI.getCurrent().navigate("user"));
         Button accountButton = new Button("Przejdź do kont"
                 , s -> UI.getCurrent().navigate("account"));
 
-        Button paymentHistoryButton = new Button("Przejdź do histori płatności"
-                , s -> UI.getCurrent().navigate("paymentHistory"));
+        VerticalLayout verticalLayout = new VerticalLayout();
+        verticalLayout.add(accountButton, userButton);
 
-        Button creditButton = new Button("Przejdź do panelu kredytów"
-                , s -> UI.getCurrent().navigate("credit"));
+        if (accountService.getListOfAccounts().size() != 0) {
+            Button paymentHistoryButton = new Button("Przejdź do histori płatności"
+                    , s -> UI.getCurrent().navigate("paymentHistory"));
+            Button creditButton = new Button("Przejdź do panelu kredytów",
+                    s -> UI.getCurrent().navigate("credit"));
+            verticalLayout.add(paymentHistoryButton, creditButton);
+        }
 
-        Button userButton = new Button("Przejdź do panelu użytkownika"
-                , s -> UI.getCurrent().navigate("user"));
-
-
-        return new VerticalLayout(accountButton, paymentHistoryButton, creditButton, userButton);
+        return verticalLayout;
     }
 
 }

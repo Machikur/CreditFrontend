@@ -2,7 +2,9 @@ package com.bankfrontend.domain;
 
 import com.bankfrontend.domain.currency.Currency;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

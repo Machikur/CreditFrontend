@@ -19,7 +19,8 @@ public class Payment extends VerticalLayout implements AccountObservable {
     public Payment(AccountObservableGrid accountObservableGrid, AccountService accountService) {
         this.accountService = accountService;
         registerObserver(accountObservableGrid);
-        NumberField numberField = new NumberField("Kwota wpłaty", 0.0, event->{});
+        NumberField numberField = new NumberField("Kwota wpłaty", 0.0, event -> {
+        });
         Button payButton = new Button("wpłać", b -> {
             try {
                 this.accountService.makeDeposit(accountObservableGrid.getSelectedOptionId(), numberField.getValue());

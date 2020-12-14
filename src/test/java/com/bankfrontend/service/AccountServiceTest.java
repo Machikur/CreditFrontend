@@ -36,7 +36,7 @@ public class AccountServiceTest {
     private UserService userService;
 
     @Test
-    public void getAccountIdByAccountNumber() {
+    public void getAccountIdByAccountNumberTest() {
         //given
         Account[] accounts = {getSimpleAccount()};
         String accountNumber = accounts[0].getAccountNumber();
@@ -52,7 +52,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void getAllCashInCurrency() {
+    public void getAllCashInCurrencyTest() {
         //given
         Currency currency = Currency.USD;
         double quote = 2000.0;
@@ -68,7 +68,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void getListOfAccounts() {
+    public void getListOfAccountsTest() {
         Account[] accounts = {getSimpleAccount(), getSimpleAccount()};
         when(restTemplate.getForObject(any(), any())).thenReturn(accounts);
 
@@ -83,7 +83,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void getAccountNumbers() {
+    public void getAccountNumbersTest() {
         //given
         Account[] accounts = {getSimpleAccount(), getSimpleAccount()};
         when(restTemplate.getForObject(any(), any())).thenReturn(accounts);
@@ -99,7 +99,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void createNewAccount() {
+    public void createNewAccountTest() {
         //given
         Currency currency = Currency.USD;
 
@@ -111,7 +111,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void deleteAccount() {
+    public void deleteAccountTest() {
         //given
         long accountId = 1L;
         int pinCode = 1234;
@@ -124,7 +124,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void makeDeposit() {
+    public void makeDepositTest() {
         //given
         long accountId = 1L;
         double quote = 123;
@@ -137,7 +137,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void makeWithdrawal() {
+    public void makeWithdrawalTest() {
         //given
         long accountId = 1L;
         double quote = 123;

@@ -54,7 +54,7 @@ public class CurrencyServiceTest {
         when(restTemplate.getForObject(any(), any())).thenReturn(20.0);
 
         //when
-        Double result = currencyService.countQuote(Currency.PLN,Currency.EUR, 2d);
+        Double result = currencyService.countQuote(Currency.PLN, Currency.EUR, 2d);
 
         //then
         Assert.assertNotNull(result);

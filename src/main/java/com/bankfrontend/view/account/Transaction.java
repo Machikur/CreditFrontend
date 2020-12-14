@@ -29,8 +29,10 @@ public class Transaction extends VerticalLayout implements AccountObservable {
 
         Text title = new Text("Zrób przelew na konto ");
         TextField accountNumberField = new TextField("Na rachunek", "", "");
-        NumberField quote = new NumberField("Wprowadź kwotę", (double) 0, event->{});
-        NumberField pin = new NumberField("Wprowadź pin", (double) 0, event->{});
+        NumberField quote = new NumberField("Wprowadź kwotę", (double) 0, event -> {
+        });
+        NumberField pin = new NumberField("Wprowadź pin", (double) 0, event -> {
+        });
 
         Button accept = new Button("Wykonaj przelew", event -> {
             try {

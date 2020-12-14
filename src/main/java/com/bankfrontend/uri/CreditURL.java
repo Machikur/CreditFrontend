@@ -1,6 +1,6 @@
 package com.bankfrontend.uri;
 
-import com.bankfrontend.StaticsURLAndStrings;
+import com.bankfrontend.AppStatics;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -10,25 +10,25 @@ import java.net.URI;
 public class CreditURL {
 
     public URI getForUserCreditsURI(Long userId) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/credits")
+        return UriComponentsBuilder.fromHttpUrl(AppStatics.BASE_URL + "/credits")
                 .queryParam("userId", userId)
                 .build().encode().toUri();
     }
 
     public URI getCreditOptionsURI(Long userId) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/userOptions")
+        return UriComponentsBuilder.fromHttpUrl(AppStatics.BASE_URL + "/userOptions")
                 .queryParam("userId", userId)
                 .build().encode().toUri();
     }
 
     public URI deleteCreditURI(Long creditId) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/credit")
+        return UriComponentsBuilder.fromHttpUrl(AppStatics.BASE_URL + "/credit")
                 .queryParam("creditId", creditId)
                 .build().encode().toUri();
     }
 
     public URI createNewCreditURI(Long userId, Long accountId, Double quote, Integer days) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/credit")
+        return UriComponentsBuilder.fromHttpUrl(AppStatics.BASE_URL + "/credit")
                 .queryParam("userId", userId)
                 .queryParam("accountId", accountId)
                 .queryParam("quote", quote)
@@ -37,7 +37,7 @@ public class CreditURL {
     }
 
     public URI getInterestForUserURI(Long userId, int days) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/credit/interest")
+        return UriComponentsBuilder.fromHttpUrl(AppStatics.BASE_URL + "/credit/interest")
                 .queryParam("userId", userId)
                 .queryParam("days", days)
                 .build().encode().toUri();

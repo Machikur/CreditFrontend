@@ -1,6 +1,6 @@
 package com.bankfrontend.service;
 
-import com.bankfrontend.StaticsURLAndStrings;
+import com.bankfrontend.AppStatics;
 import com.bankfrontend.domain.info.Info;
 import com.vaadin.flow.spring.annotation.SpringComponent;
 import com.vaadin.flow.spring.annotation.UIScope;
@@ -19,7 +19,7 @@ public class InfoService {
     }
 
     public Info getProjectAndAdminInfo() {
-        return restTemplate.getForObject(StaticsURLAndStrings.PROJECT_INFO, Info.class);
+        return restTemplate.getForObject(AppStatics.PROJECT_INFO, Info.class);
     }
 
 }

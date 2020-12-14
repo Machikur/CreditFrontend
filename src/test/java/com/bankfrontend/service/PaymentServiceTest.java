@@ -34,21 +34,10 @@ public class PaymentServiceTest {
     private UserService userService;
 
     @Test
-    public void makePayment() {
+    public void getUserPaymentsTest() {
         //given
-
-        //when
-        paymentService.makePayment(1L, new Payment(1L, 2L, BigDecimal.TEN,false), 1234);
-
-        //then
-        verify(restTemplate, times(1)).postForObject(any(), any(), any());
-    }
-
-    @Test
-    public void getUserPayments() {
-        //given
-        Payment one = new Payment(1L, 2L, BigDecimal.TEN,false);
-        Payment two = new Payment(1L, 4L, BigDecimal.TEN,false);
+        Payment one = new Payment(1L, 2L, BigDecimal.TEN, false);
+        Payment two = new Payment(1L, 4L, BigDecimal.TEN, false);
         Payment[] payments = {one, two};
         when(restTemplate.getForObject(any(), any())).thenReturn(payments);
 
@@ -64,10 +53,10 @@ public class PaymentServiceTest {
     }
 
     @Test
-    public void getAccountPayments() {
+    public void getAccountPaymentsTest() {
         //given
-        Payment one = new Payment(1L, 2L, BigDecimal.TEN,false);
-        Payment two = new Payment(1L, 4L, BigDecimal.TEN,false);
+        Payment one = new Payment(1L, 2L, BigDecimal.TEN, false);
+        Payment two = new Payment(1L, 4L, BigDecimal.TEN, false);
         Payment[] payments = {one, two};
         when(restTemplate.getForObject(any(), any())).thenReturn(payments);
 

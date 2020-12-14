@@ -1,6 +1,6 @@
 package com.bankfrontend.view.payment;
 
-import com.bankfrontend.StaticsURLAndStrings;
+import com.bankfrontend.AppStatics;
 import com.bankfrontend.domain.Payment;
 import com.bankfrontend.domain.PaymentType;
 import com.bankfrontend.service.PaymentService;
@@ -22,7 +22,7 @@ public class PaymentsHistoryList extends VerticalLayout implements PaymentObserv
     @Override
     public void updateComponent(PaymentType paymentType, String accountNumber) {
         List<Payment> payments;
-        if (StaticsURLAndStrings.ALL.equals(accountNumber)) {
+        if (AppStatics.ALL.equals(accountNumber)) {
             payments = paymentService.getUserPayments(paymentType);
         } else {
             payments = paymentService.getAccountPayments(accountNumber, paymentType);

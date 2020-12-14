@@ -1,12 +1,10 @@
 package com.bankfrontend.service;
 
-import com.bankfrontend.ConfigurationProject;
 import com.bankfrontend.domain.Status;
 import com.bankfrontend.domain.User;
 import com.bankfrontend.domain.currency.Currency;
 import com.bankfrontend.uri.UserURL;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -18,8 +16,8 @@ import java.util.Objects;
 @Getter
 public class UserService {
 
-    private final RestTemplate restTemplate=new RestTemplate();
     private static volatile UserService userService;
+    private final RestTemplate restTemplate = new RestTemplate();
     private final UserURL userURL = new UserURL();
     private Long userId;
     private String userName;

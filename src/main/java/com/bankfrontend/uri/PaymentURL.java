@@ -1,6 +1,6 @@
 package com.bankfrontend.uri;
 
-import com.bankfrontend.StaticsURLAndStrings;
+import com.bankfrontend.AppStatics;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -10,19 +10,19 @@ import java.net.URI;
 public class PaymentURL {
 
     public URI getUserPaymentsURL(Long userId) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/userPayments")
+        return UriComponentsBuilder.fromHttpUrl(AppStatics.BASE_URL + "/userPayments")
                 .queryParam("userId", userId)
                 .build().encode().toUri();
     }
 
     public URI getAccountPaymentsURL(String accountNumber) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/accountPayments")
+        return UriComponentsBuilder.fromHttpUrl(AppStatics.BASE_URL + "/accountPayments")
                 .queryParam("accountNumber", accountNumber)
                 .build().encode().toUri();
     }
 
     public URI makePaymentURL(long userId, int pinNumber) {
-        return UriComponentsBuilder.fromHttpUrl(StaticsURLAndStrings.BASE_URL + "/payment")
+        return UriComponentsBuilder.fromHttpUrl(AppStatics.BASE_URL + "/payment")
                 .queryParam("userId", userId)
                 .queryParam("pinNumber", pinNumber)
                 .build().encode().toUri();

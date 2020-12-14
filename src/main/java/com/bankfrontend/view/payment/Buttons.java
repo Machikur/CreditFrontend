@@ -1,6 +1,6 @@
 package com.bankfrontend.view.payment;
 
-import com.bankfrontend.StaticsURLAndStrings;
+import com.bankfrontend.AppStatics;
 import com.bankfrontend.domain.Account;
 import com.bankfrontend.domain.PaymentType;
 import com.bankfrontend.service.AccountService;
@@ -23,7 +23,7 @@ public class Buttons extends HorizontalLayout implements PaymentObservable {
                 .map(Account::getAccountNumber)
                 .collect(Collectors.toList());
         if (!accounts.isEmpty()) {
-            accounts.add(0, StaticsURLAndStrings.ALL);
+            accounts.add(0, AppStatics.ALL);
             accountBox.setItems(accounts);
             accountBox.setValue(accounts.get(0));
         }

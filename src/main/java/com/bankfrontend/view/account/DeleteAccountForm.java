@@ -20,7 +20,8 @@ public class DeleteAccountForm extends VerticalLayout implements AccountObservab
     public DeleteAccountForm(AccountObservableGrid accountObservableGrid, AccountService accountService) {
         this.accountService = accountService;
         registerObserver(accountObservableGrid);
-        NumberField numberField = new NumberField("Kod pin", (double) 0, event->{});
+        NumberField numberField = new NumberField("Kod pin", (double) 0, event -> {
+        });
         Button deleteButton = new Button("Usuń konto", b -> {
             try {
                 this.accountService.deleteAccount(accountObservableGrid.getSelectedOptionId(), numberField.getValue().intValue());
